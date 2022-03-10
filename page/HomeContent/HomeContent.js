@@ -9,6 +9,7 @@ import { StyleSheet,
          FlatList 
         } from 'react-native'
 import { useState, useEffect } from 'react'
+import { reqIndex } from '../../api'
 
 
 const { width } = Dimensions.get('window')
@@ -16,20 +17,20 @@ const itemDimension = (width - 20) / 3
 const itemImgDimension = itemDimension - 20
 const numColumns =  parseInt(width / itemDimension)  // 根据屏幕分辨率判断该展示几列
 
-const Item = ({ id, title, categories, navigation }) => {
+const Item = ({ id, title, navigation }) => {
     const handelPress = (id, categories) => {
         navigation.navigate('Item', { id, categories })
     }
 
     return (
         <TouchableWithoutFeedback
-            onPress={() => handelPress(id, categories)}
+            onPress={() => handelPress(id)}
         >
             <View 
                 style={[{width: itemDimension}, styles.item]}
             >
                 <Image 
-                    source={require('../../resource/imgs/index.jpg')}
+                    source={{uri: 'http://localhost.charlesproxy.com/api/imgs/index.jpg'}}
                     style={[
                         {width: itemImgDimension, height: itemImgDimension},
                         styles.itemImg
@@ -52,32 +53,31 @@ const renderItem = ({ item }) => {
         <Item 
             id={item.id} 
             title={item.title} 
-            categories={categories} 
             navigation={navigation}
         />
     )
 }
 
-const handelGetListSucc = (res) => {
- if(res.ret && res.data) {
-   setCategories(res.data.categories)
- }
+const getHomeList = async () => {
+    const res = await reqIndex()
+    if(res.ret && res.data) {
+        setCategories(res.data.categories)
+    } else {
+        alert('请求index失败')
+    }
 }
 
 useEffect(() => {
- fetch('http://localhost.charlesproxy.com/api/index.json')
-   .then((res) => res.json())
-   .then(handelGetListSucc)
-   .catch(() => { alert('请求异常') })
+    getHomeList()
 }, [])
 
 return (
  <View style={styles.container}>
      <View style={styles.top}>
        <Image
-       // 本地载入图片尺寸 1920 * 1080
+       // 载入图片尺寸 1920 * 1080
          style={[{width: width, height: 1080 * .2}, styles.topImg]} 
-         source={require('../../resource/imgs/index.jpg')}/>
+         source={{uri: 'http://localhost.charlesproxy.com/api/imgs/index.jpg'}}/>
        <TextInput
          style={[styles.search, {top: 160}]}
          placeholder='请输入搜索内容'
