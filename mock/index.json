@@ -1,0 +1,54 @@
+{
+    "ret": true,
+    "data": {
+        "categories": [{
+            "id": "001",
+            "title": "主食",
+            "imgUrl": "./resource/imgs/main.png"
+        },{
+            "id": "002",
+            "title": "蛋类",
+            "imgUrl": "./resource/imgs/egg.png"
+        },{
+            "id": "003",
+            "title": "豆制品",
+            "imgUrl": "./resource/imgs/soybean.png"
+        },{
+            "id": "004",
+            "title": "谷类",
+            "imgUrl": "./resource/imgs/cereal.png"
+        },{
+            "id": "005",
+            "title": "水果",
+            "imgUrl": "./resource/imgs/fruit.png"
+        },{
+            "id": "006",
+            "title": "肉类",
+            "imgUrl": "./resource/imgs/meat.png"
+        },{
+            "id": "007",
+            "title": "奶类",
+            "imgUrl": "./resource/imgs/milk.png"
+        },{
+            "id": "008",
+            "title": "菌菇",
+            "imgUrl": "./resource/imgs/mushrooms.png"
+        },{
+            "id": "009",
+            "title": "坚果",
+            "imgUrl": "./resource/imgs/nut.png"
+        },{
+            "id": "0010",
+            "title": "油品",
+            "imgUrl": "./resource/imgs/oil.png"
+        },{
+            "id": "0011",
+            "title": "调料",
+            "imgUrl": "./resource/imgs/seasoning.png"
+        },{
+            "id": "0012",
+            "title": "蔬菜",
+            "imgUrl": "./resource/imgs/vegetable.png"
+        }]
+    }
+}
